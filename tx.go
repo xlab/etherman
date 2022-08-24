@@ -6,11 +6,12 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/InjectiveLabs/etherman/deployer"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	"github.com/ethereum/go-ethereum/common"
 	cli "github.com/jawher/mow.cli"
 	log "github.com/xlab/suplog"
+
+	"github.com/xlab/etherman/deployer"
 )
 
 func onTx(cmd *cli.Cmd) {

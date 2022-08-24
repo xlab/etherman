@@ -19,7 +19,7 @@ import (
 	"github.com/pkg/errors"
 	"golang.org/x/crypto/ssh/terminal"
 
-	"github.com/InjectiveLabs/etherman/keystore"
+	"github.com/xlab/etherman/keystore"
 )
 
 var (

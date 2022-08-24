@@ -9,12 +9,13 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/InjectiveLabs/etherman/sol"
 	"github.com/ethereum/go-ethereum/accounts/abi"
 	ctypes "github.com/ethereum/go-ethereum/core/types"
 	"github.com/hashicorp/go-multierror"
 	"github.com/pkg/errors"
 	"golang.org/x/tools/cover"
+
+	"github.com/xlab/etherman/sol"
 )
 
 type CoverageDataCollector interface {

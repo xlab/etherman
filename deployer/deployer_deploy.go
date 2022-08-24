@@ -7,13 +7,13 @@ import (
 	"math/big"
 	"path/filepath"
 
-	"github.com/pkg/errors"
-	log "github.com/xlab/suplog"
-
-	"github.com/InjectiveLabs/etherman/sol"
 	"github.com/ethereum/go-ethereum"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/pkg/errors"
+	log "github.com/xlab/suplog"
+
+	"github.com/xlab/etherman/sol"
 )
 
 var (

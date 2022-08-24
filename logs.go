@@ -5,11 +5,11 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/InjectiveLabs/etherman/deployer"
+	"github.com/ethereum/go-ethereum/common"
 	cli "github.com/jawher/mow.cli"
 	log "github.com/xlab/suplog"
 
-	"github.com/ethereum/go-ethereum/common"
+	"github.com/xlab/etherman/deployer"
 )
 
 func onLogs(cmd *cli.Cmd) {
