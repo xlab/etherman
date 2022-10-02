@@ -13,7 +13,6 @@ import (
 	"github.com/ethereum/go-ethereum/common"
 	ethcmn "github.com/ethereum/go-ethereum/common"
 	ethtypes "github.com/ethereum/go-ethereum/core/types"
-	"github.com/ethereum/go-ethereum/crypto"
 	ethcrypto "github.com/ethereum/go-ethereum/crypto"
 	cli "github.com/jawher/mow.cli"
 	"github.com/pkg/errors"
@@ -135,7 +134,7 @@ func initEthereumAccountsManager(
 
 	case len(*fromPrivKey) > 0:
 		pkHex := strings.TrimPrefix(*fromPrivKey, "0x")
-		ethPk, err := crypto.HexToECDSA(pkHex)
+		ethPk, err := ethcrypto.HexToECDSA(pkHex)
 		if err != nil {
 			err = errors.Wrap(err, "failed to hex-decode Ethereum ECDSA Private Key")
 			return emptyEthAddress, nil, err
