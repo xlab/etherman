@@ -88,7 +88,7 @@ func (d *deployer) Tx(
 	nonceCtx, cancelFn := context.WithTimeout(context.Background(), d.options.RPCTimeout)
 	defer cancelFn()
 
-	nonce, err := client.PendingNonceAt(nonceCtx, txOpts.From)
+	nonce, err := client.NonceAt(nonceCtx, txOpts.From, nil)
 	if err != nil {
 		log.WithField("from", txOpts.From.Hex()).WithError(err).Errorln("failed to get most recent nonce")
 		return noHash, nil, ErrNoNonce
@@ -171,6 +171,12 @@ func (d *deployer) Tx(
 
 		Context: txCtx,
 	}
+
+	log.WithFields(log.Fields{
+		"nonce":     big.NewInt(int64(nonce)),
+		"gas_price": d.options.GasPrice.String(),
+		"gas_limit": d.options.GasLimit,
+	}).Debugln("broadcasting a tx", contract.Name)
 
 	txData, err := boundContract.Transact(ethTxOpts, methodName, mappedArgs...)
 	if err != nil {
