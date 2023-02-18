@@ -129,9 +129,9 @@ func (d *deployer) Deploy(
 	}
 
 	log.WithFields(log.Fields{
-		"nonce":     big.NewInt(int64(nonce)),
-		"gas_price": d.options.GasPrice.String(),
-		"gas_limit": d.options.GasLimit,
+		"nonce":    big.NewInt(int64(nonce)),
+		"gasPrice": d.options.GasPrice.String(),
+		"gasLimit": d.options.GasLimit,
 	}).Debugln("deploying contract", contract.Name)
 
 	address, _, err := boundContract.DeployContract(ethTxOpts, mappedArgs...)
@@ -151,7 +151,7 @@ func (d *deployer) Deploy(
 			err = trimCoverageReport(err)
 		}
 
-		log.WithError(err).Errorln("failed to deploy contract")
+		log.WithError(err).WithField("txHash", txHash.Hex()).Errorln("failed to deploy contract")
 		return txHash, nil, err
 	}
 

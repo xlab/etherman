@@ -173,9 +173,9 @@ func (d *deployer) Tx(
 	}
 
 	log.WithFields(log.Fields{
-		"nonce":     big.NewInt(int64(nonce)),
-		"gas_price": d.options.GasPrice.String(),
-		"gas_limit": d.options.GasLimit,
+		"nonce":    big.NewInt(int64(nonce)),
+		"gasPrice": d.options.GasPrice.String(),
+		"gasLimit": d.options.GasLimit,
 	}).Debugln("broadcasting a tx", contract.Name)
 
 	txData, err := boundContract.Transact(ethTxOpts, methodName, mappedArgs...)
@@ -191,7 +191,7 @@ func (d *deployer) Tx(
 			err = trimCoverageReport(err)
 		}
 
-		log.WithError(err).Errorln("failed to send transaction")
+		log.WithError(err).WithField("txHash", txHash.Hex()).Errorln("failed to send transaction")
 		return txHash, nil, err
 	}
 
